@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:world_time/services/world_time.dart';
 
 class Location extends StatefulWidget {
+  const Location({super.key});
+
   @override
   _LocationState createState() => _LocationState();
 }
@@ -22,6 +24,7 @@ class _LocationState extends State<Location> {
   void updateTime(index) async {
     WorldTime instance = locations[index];
     await instance.getTime();
+
     Navigator.pop(context, {
       'location': instance.location,
       'flag': instance.flag,
@@ -37,11 +40,11 @@ class _LocationState extends State<Location> {
     return Scaffold(
         appBar: AppBar(
           elevation: 0,
-          title: const Text('Locations', style: TextStyle(color: Colors.white)),
+          title: const Text('Locations', style: TextStyle(color: Colors.black)),
           centerTitle: true,
-          backgroundColor: Colors.black,
+          backgroundColor: Colors.white,
         ),
-        backgroundColor: Colors.amber,
+        backgroundColor: Colors.white,
         body: ListView.builder(
             itemCount: locations.length,
             itemBuilder: (context, index) {
